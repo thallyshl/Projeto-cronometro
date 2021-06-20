@@ -10,25 +10,29 @@ let decInitial = 00;
 let minInitial = 00;
 let secInitial = 00;
 let timer;
-console.log (decInitial)
-console.log (minInitial)
-console.log (secInitial)
-
+let anchor = true;
 
 function startWatch() {
     clearInterval (timer);
     timer = setInterval(startTime, 10);
+    anchor = false;
 }
 
 function stopWatch () {
-    clearInterval(timer)
+    clearInterval(timer);
+    anchor = true;
+    
 }
 
 function resetWatch () {
-    clearInterval (timer);
-    dec.innerHTML = "00";
-    min.innerHTML = "00:";
-    sec.innerHTML = "00:";
+    if (anchor === false) {
+        clearInterval (timer);
+        anchor = true;
+    } else if (anchor === true) {
+        dec.innerHTML = "00";
+        min.innerHTML = "00:";
+        sec.innerHTML = "00:";
+    }
 }
 
 
